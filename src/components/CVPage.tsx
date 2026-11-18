@@ -1,8 +1,74 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SITE_URL } from "../constants";
 import { ArrowLeft, Download, ExternalLink, Mail, Phone, MapPin, Linkedin, Printer } from "lucide-react";
 
 export default function CVPage() {
   const pdfUrl = "/cv-alain-nguyen.pdf";
+
+  // Metadonnees propres a la page CV
+  useEffect(() => {
+    const canonicalUrl = `${SITE_URL}/cv`;
+    const previousTitle = document.title;
+    document.title = "CV — Viet Hung Alain Nguyen, Directeur des Systèmes d'Information | Valeurs IT";
+
+    const restoreMeta: Array<() => void> = [];
+    const updateMeta = (selector: string, content: string) => {
+      const el = document.head.querySelector(selector);
+      if (!el) return;
+      const previous = el.getAttribute("content");
+      el.setAttribute("content", content);
+      restoreMeta.push(() => {
+        if (previous === null) el.removeAttribute("content");
+        else el.setAttribute("content", previous);
+      });
+    };
+
+    const description = "Parcours de Viet Hung Alain Nguyen, Directeur des Systèmes d'Information : stratégie SI, transformation numérique, cybersécurité et management de transition. 25 ans d'expérience, dont les Jeux de Paris 2024.";
+
+    updateMeta('meta[name="description"]', description);
+    updateMeta('meta[property="og:type"]', "profile");
+    updateMeta('meta[property="og:title"]', "CV — Viet Hung Alain Nguyen, DSI de transition");
+    updateMeta('meta[property="og:description"]', description);
+    updateMeta('meta[property="og:url"]', canonicalUrl);
+
+    const canonical = document.head.querySelector('link[rel="canonical"]');
+    const previousCanonical = canonical?.getAttribute("href") ?? null;
+    canonical?.setAttribute("href", canonicalUrl);
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Viet Hung Alain Nguyen",
+      alternateName: "Alain Nguyen",
+      jobTitle: "Directeur des Systèmes d'Information",
+      url: canonicalUrl,
+      sameAs: ["https://www.linkedin.com/in/vnguye27"],
+      worksFor: { "@type": "Organization", name: "Valeurs IT", url: SITE_URL },
+      knowsAbout: [
+        "Direction des systèmes d'information",
+        "DSI de transition",
+        "Stratégie SI",
+        "Gouvernance IT",
+        "Transformation numérique",
+        "Cybersécurité",
+        "Continuité d'activité"
+      ]
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+      restoreMeta.forEach(restore => restore());
+      if (canonical) {
+        if (previousCanonical === null) canonical.removeAttribute("href");
+        else canonical.setAttribute("href", previousCanonical);
+      }
+      schema.remove();
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 print:bg-white print:text-black">

@@ -3,7 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar, Tag, Share2, Clock, Copy, Check, Linkedin } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { SITE_CONTENT } from "../constants";
+import { SITE_CONTENT, SITE_URL } from "../constants";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -18,7 +18,7 @@ export default function ArticleView() {
 
   useEffect(() => {
     if (!article) return;
-    const canonicalUrl = `${window.location.origin}/actualites/${article.id}`;
+    const canonicalUrl = `${SITE_URL}/actualites/${article.id}`;
     const previousTitle = document.title;
     document.title = `${article.title} | Valeurs IT`;
 
@@ -55,7 +55,7 @@ export default function ArticleView() {
       author: { "@type": "Person", name: "Alain Nguyen" },
       publisher: { "@type": "Organization", name: "Valeurs IT" },
       mainEntityOfPage: canonicalUrl,
-      image: article.image.startsWith("http") ? article.image : `${window.location.origin}${article.image}`
+      image: article.image.startsWith("http") ? article.image : `${SITE_URL}${article.image}`
     });
     document.head.appendChild(schema);
 

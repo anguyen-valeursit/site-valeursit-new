@@ -14,7 +14,7 @@ import {
   Sparkles,
   ExternalLink
 } from "lucide-react";
-import { SITE_CONTENT } from "../constants";
+import { SITE_CONTENT, SITE_URL } from "../constants";
 import { db, auth } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Header from "./Header";
@@ -83,21 +83,38 @@ export default function LivreBlancPage() {
 
   // Dynamic SEO title & description
   useEffect(() => {
+    const canonicalUrl = `${SITE_URL}/livre-blanc`;
     const previousTitle = document.title;
     document.title = "Livre Blanc : Une aventure humaine et technique | Valeurs IT";
 
+    const restoreMeta: Array<() => void> = [];
     const updateMeta = (selector: string, content: string) => {
       const el = document.head.querySelector(selector);
-      if (el) el.setAttribute("content", content);
+      if (!el) return;
+      const previous = el.getAttribute("content");
+      el.setAttribute("content", content);
+      restoreMeta.push(() => {
+        if (previous === null) el.removeAttribute("content");
+        else el.setAttribute("content", previous);
+      });
     };
 
     updateMeta('meta[name="description"]', "Téléchargez le livre blanc exclusif sur les coulisses technologiques et humaines des Jeux de Paris 2024 par Alain Nguyen, DSI délégué.");
     updateMeta('meta[property="og:title"]', "Livre Blanc : Paris 2024 — Une aventure humaine et technique | Valeurs IT");
     updateMeta('meta[property="og:description"]', "Retour d'expérience exclusif sur la feuille de route technologique, la résilience et le management d'équipes lors de Paris 2024.");
-    updateMeta('meta[property="og:url"]', `${window.location.origin}/livre-blanc`);
+    updateMeta('meta[property="og:url"]', canonicalUrl);
+
+    const canonical = document.head.querySelector('link[rel="canonical"]');
+    const previousCanonical = canonical?.getAttribute("href") ?? null;
+    canonical?.setAttribute("href", canonicalUrl);
 
     return () => {
       document.title = previousTitle;
+      restoreMeta.forEach(restore => restore());
+      if (canonical) {
+        if (previousCanonical === null) canonical.removeAttribute("href");
+        else canonical.setAttribute("href", previousCanonical);
+      }
     };
   }, []);
 

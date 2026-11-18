@@ -1,3 +1,10 @@
+// URL canonique du site, sans "www".
+// Toujours utiliser cette constante plutot que window.location.origin :
+// l'origine varie selon que le visiteur arrive par valeurs-it.com ou par
+// www.valeurs-it.com, ce qui fait declarer deux URL canoniques differentes
+// pour une meme page et divise le signal transmis aux moteurs.
+export const SITE_URL = "https://valeurs-it.com";
+
 export const SITE_CONTENT = {
   company: {
     name: "Valeurs IT",
