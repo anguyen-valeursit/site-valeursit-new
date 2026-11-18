@@ -1,0 +1,87 @@
+import { motion } from "motion/react";
+import { Linkedin, Quote, FileText, Download } from "lucide-react";
+import { Link } from "react-router-dom";
+import { SITE_CONTENT } from "../constants";
+
+export default function Bio() {
+  return (
+    <section id="bio" className="py-24 px-6 bg-paper relative overflow-hidden">
+      {/* Decorative background text */}
+      <div className="absolute top-0 left-0 text-[20vw] font-serif font-bold opacity-[0.02] select-none pointer-events-none -translate-y-1/4">
+        VISION
+      </div>
+      
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="order-2 lg:order-1"
+        >
+          <div className="relative mb-10">
+            <Quote className="w-12 h-12 text-accent opacity-20 absolute -top-6 -left-6" />
+            <h2 className="text-sm font-bold uppercase tracking-widest text-accent mb-6">Le Fondateur</h2>
+            <h3 className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight">
+              {SITE_CONTENT.bio.name}
+            </h3>
+            <p className="text-xl font-serif italic text-gray-500 mb-8">
+              "{SITE_CONTENT.bio.title}"
+            </p>
+          </div>
+          
+          <div className="space-y-6 text-lg text-gray-600 leading-relaxed mb-10">
+            <p>{SITE_CONTENT.bio.description}</p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href={SITE_CONTENT.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil LinkedIn d'Alain Nguyen"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#0077b5] text-white rounded-full font-medium hover:bg-[#005e93] transition-all text-sm shadow-md hover:shadow-lg group"
+            >
+              <Linkedin className="w-5 h-5 fill-current text-white transition-transform group-hover:scale-110" />
+              <span>Profil LinkedIn</span>
+            </a>
+            <Link
+              to="/cv"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-all text-sm shadow-md"
+            >
+              <FileText className="w-4 h-4 text-accent" />
+              Consulter le CV (DSI)
+            </Link>
+            <a
+              href="/cv-alain-nguyen.pdf"
+              download="CV_Alain_Nguyen_DSI.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-primary/20 rounded-full font-medium hover:bg-accent/5 transition-all text-sm text-primary"
+            >
+              <Download className="w-4 h-4" />
+              Télécharger le PDF
+            </a>
+          </div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="order-1 lg:order-2 relative"
+        >
+          <div className="aspect-[3/4] bg-gray-200 rounded-3xl overflow-hidden shadow-2xl relative z-10">
+            <img
+              src="/portrait-alain-nguyen.jpg"
+              alt={SITE_CONTENT.bio.name}
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          {/* Decorative frame */}
+          <div className="absolute -top-6 -right-6 w-full h-full border-2 border-accent/20 rounded-3xl -z-10" />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
