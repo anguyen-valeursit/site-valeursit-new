@@ -10,7 +10,7 @@ export default function CVPage() {
   useEffect(() => {
     const canonicalUrl = `${SITE_URL}/cv`;
     const previousTitle = document.title;
-    document.title = "CV — Viet Hung Alain Nguyen, Directeur des Systèmes d'Information | Valeurs IT";
+    document.title = "CV — Viet Hung Alain Nguyen, DSI de transition | Valeurs IT";
 
     const restoreMeta: Array<() => void> = [];
     const updateMeta = (selector: string, content: string) => {

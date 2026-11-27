@@ -1,5 +1,9 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+/* Les polices Mulish et Nunito Sans sont chargees depuis index.html.
+   Ne pas les reintroduire ici : @import "tailwindcss" est developpe en milliers
+   de regles, donc tout @import place apres devient invalide et est supprime
+   silencieusement a la compilation (seul un avertissement de build le signale). */
 
 @theme {
   --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
