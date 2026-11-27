@@ -53,8 +53,113 @@ export const SITE_CONTENT = {
   },
   news: [
   {
+    id: "maitrise-dependances-02",
+    title: "Dépendances technologiques : savez-vous vraiment de qui vous dépendez ?",
+    seoTitle: "Dépendances IT : identifier les risques",
+    excerpt: "Cartographiez les dépendances IT qui menacent la continuité, évaluez les preuves de réversibilité et priorisez les actions sur vos services critiques.",
+    date: "17 novembre 2026",
+    category: "Stratégie & cybersécurité",
+    image: "/aiguillages-dependances.svg",
+    shareImage: "/aiguillages-dependances-social.png",
+    imageAlt: "Aiguillages stylisés représentant des dépendances convergeant vers un service essentiel.",
+    content: `Vous connaissez peut-être les fournisseurs inscrits dans vos contrats. Pourtant, lorsqu’il faut envisager une alternative, un connecteur oublié, un accès d’administration détenu par un prestataire ou une compétence devenue rare peut ralentir le changement. La liste des fournisseurs décrit une partie du paysage ; elle n’explique pas toujours ce qui maintient réellement un service en fonctionnement.
+
+Pour établir un diagnostic exploitable, partez d’une activité essentielle et remontez sa chaîne de dépendances. L’objectif n’est pas de tout cartographier au même niveau. Il est de repérer les quelques dépendances qui pourraient interrompre l’activité ou réduire votre capacité à agir.
+
+## Partir du service rendu
+
+Choisissez un service concret : traiter une commande, payer les salariés, produire ou accéder aux dossiers clients. Avec son responsable, précisez ce qui doit continuer en cas d’incident, pendant combien de temps une interruption est acceptable et quelles données sont indispensables.
+
+Suivez ensuite les éléments qui rendent ce service possible : application, base de données, hébergement, identité, sauvegarde, interfaces, support et intervenants. Cette lecture par service donne un périmètre commun aux équipes métier et IT. Elle évite de confondre une cartographie très fournie avec une compréhension utile des conséquences.
+
+## Regarder au-delà du contrat direct
+
+Un fournisseur peut s’appuyer sur une plateforme tierce. Deux produits différents peuvent partager un hébergeur, un service d’identité ou un composant logiciel. Une solution développée en interne peut dépendre d’une équipe externe pour ses mises à jour.
+
+Pour les services prioritaires, demandez qui opère chaque brique, qui détient les accès, qui sait restaurer le service et qui peut changer les conditions d’utilisation. Signalez les liens que vous ne pouvez pas encore confirmer : une inconnue documentée devient une action d’enquête, tandis qu’une hypothèse tenue pour un fait fausse les décisions.
+
+## Chercher des preuves de dépendance
+
+Le guide du Do Tank Alliancy propose d’examiner plusieurs dimensions complémentaires : technologie, conditions commerciales et contractuelles, données, contraintes juridiques et compétences. Pour chacune, cherchez une preuve adaptée. Un export documenté ne prouve pas que les données pourront être réutilisées ; un test de reprise apporte une réponse plus concrète. Une clause de réversibilité ne chiffre pas à elle seule l’effort nécessaire pour sortir.
+
+Examinez aussi les usages qui rendent une solution difficile à remplacer. Quelle fonction est réellement indispensable ? À quels utilisateurs ? Un besoin spécifique et limité peut parfois être traité séparément au lieu de verrouiller toute une population.
+
+## Relier coût, criticité et options
+
+Le montant d’un contrat ne suffit pas à classer le risque. Une brique peu coûteuse peut conditionner plusieurs services ; un contrat important peut être remplaçable si une option a été éprouvée. Décomposez une hausse entre prix, volume, périmètre et remise arrivant à échéance. Ajoutez au coût de sortie la reprise des données, l’adaptation des interfaces, les tests, la formation et la période de coexistence.
+
+L’étude Asterès réalisée pour le Cigref en 2026 rapporte que 47 % des organisations interrogées réduisent d’autres dépenses numériques pour absorber les hausses de logiciels et de cloud. Ce résultat décrit les réponses déclarées par les répondants ; il ne prédit pas la situation de chaque entreprise. Il rappelle toutefois qu’une dépendance peut aussi peser sur les projets qui ne seront pas financés.
+
+## Prioriser sans attendre une cartographie parfaite
+
+Pour trois à cinq services critiques, tenez une fiche courte : responsable métier, composants et prestataires, impact d’une interruption, prochaine échéance, option connue, coût et délai de sortie estimés, preuves acquises et incertitudes restantes. Croisez les regards : les achats connaissent les contrats, les équipes IT les dépendances techniques, les métiers les effets opérationnels.
+
+> **Premier pas :** choisissez les dépendances où l’impact serait fort et où les options de réponse restent faibles. Attribuez à chaque incertitude importante un responsable, une preuve à obtenir et une date de revue.
+
+Le retour d’expérience de la CNAM présenté dans les travaux du Do Tank distingue plusieurs périmètres, dont la bureautique et la collaboration, le socle technique et la cybersécurité. Cette segmentation aide à adapter le rythme et les moyens plutôt qu’à imposer une sortie générale.
+
+**Question à poser en comité :** sur quel service essentiel dépendons-nous d’un fournisseur sans alternative que nous ayons réellement évaluée ?
+
+**Sources** : [chronique originale sur Alliancy](https://alliancy.fr/les-faiseurs/dependances-technologiques-savez-vous-vraiment-de-qui-vous-dependez-14edc48b-f99f-4dd4-b9fc-6cf92e470c0e) · étude Asterès/Cigref de mai 2026 · guide du Do Tank Alliancy, autodiagnostics et retour d’expérience CNAM (disponible sur demande auprès d’Alliancy).`
+  },
+  {
+    id: "maitrise-dependances-03",
+    title: "Pourquoi la maîtrise des dépendances technologiques doit devenir un sujet de direction générale",
+    seoTitle: "Dépendances IT : un enjeu de direction",
+    excerpt: "Dépendances IT : traduisez les risques en arbitrages de continuité, de budget et de gouvernance pour donner à la direction un mandat d’action clair.",
+    date: "24 novembre 2026",
+    category: "Stratégie & cybersécurité",
+    image: "/salle-direction-arbitrage.svg",
+    shareImage: "/salle-direction-arbitrage-social.png",
+    imageAlt: "Salle de direction où les responsables métier, finance et IT examinent un arbitrage de dépendance.",
+    content: `Un contrat informatique important arrive à échéance. La DSI veut préparer une autre option, les équipes métier souhaitent conserver leurs habitudes et la direction financière cherche des économies rapides. Ces objectifs peuvent tous être légitimes. La question de gouvernance est ailleurs : qui décide du niveau de risque accepté lorsque ces priorités se rencontrent ?
+
+La maîtrise des dépendances relève de la direction générale dès qu’elle touche la continuité d’activité, la capacité d’investir ou la liberté de modifier une trajectoire. La DSI apporte les scénarios et les éléments techniques ; l’arbitrage engage l’entreprise.
+
+## Traduire le risque en conséquences d’entreprise
+
+Un nom de produit ou de fournisseur ne suffit pas à éclairer une décision exécutive. Présentez ce qui pourrait changer pour l’activité : accès à des dossiers, capacité de livraison, délai de reprise, coût engagé ou projet reporté. Distinguez le fait vérifié de l’hypothèse, puis formulez la décision attendue.
+
+Les travaux publics récents sur les dépendances des logiciels supports et la gouvernance des outils bureautiques donnent un contexte au débat. Ils ne fixent pas les priorités d’une entreprise. À chaque organisation d’identifier les services dont l’interruption ou le renchérissement pèserait réellement sur sa stratégie.
+
+## Rendre visibles les arbitrages budgétaires
+
+Une dépense contrainte peut absorber les moyens prévus pour un projet métier, un recrutement ou la formation. L’étude Asterès/Cigref rapporte une hausse moyenne déclarée de 8,7 % par an des coûts du cloud et des logiciels sur les trois années précédentes ; les répondants anticipaient 12 % pour les cinq suivantes. Ce sont des résultats et des anticipations d’enquête, pas une prévision garantie pour chaque organisation.
+
+La direction peut comparer des trajectoires si la DSI rend visibles leurs coûts complets : maintien en l’état, réduction ciblée du risque, diversification ou remplacement. Pour chacune, indiquez le coût initial, la période de coexistence, les bénéfices attendus, les risques résiduels et les capacités que l’entreprise devra mobiliser.
+
+## Définir le niveau de continuité attendu
+
+La redondance protège contre certaines pannes, mais elle ne garantit pas à elle seule le fonctionnement après la perte d’un fournisseur commun aux identités, aux licences ou au support. Les métiers et la direction doivent définir les activités prioritaires et le mode dégradé acceptable. L’IT peut ensuite proposer des réponses proportionnées et les tester.
+
+Le risque ne doit pas être accepté implicitement par l’équipe d’exploitation. Il doit être explicite, attribué à un décideur et assorti de mesures compensatoires ainsi que d’une date de réexamen.
+
+## Donner à chaque fonction un rôle précis
+
+La DSI décrit l’architecture, les dépendances et les options. Les métiers précisent le service attendu et les usages à préserver. Les achats suivent les échéances et les alternatives du marché ; le juridique examine les engagements et les droits ; la finance compare les trajectoires ; les ressources humaines identifient les compétences à conserver ou à acquérir.
+
+Un sponsor exécutif tranche lorsque ces objectifs entrent en tension. Il n’est pas toujours nécessaire de créer un nouveau comité : une instance existante peut suivre les dépendances prioritaires si elle possède le mandat, les informations et le pouvoir de décision.
+
+## Formaliser un mandat, puis le financer
+
+Un mandat utile précise le périmètre, le résultat attendu, les responsables, les moyens et la première échéance. Il nomme aussi les dépendances que l’entreprise choisit de conserver, les compensations associées et la date à laquelle cette décision sera réexaminée.
+
+Le cas Urssaf présenté dans le guide Alliancy illustre une transformation portée au niveau exécutif. Le guide rapporte une migration d’environ 90 % du parc Oracle vers PostgreSQL, un investissement supérieur à 4 millions d’euros et près de 3 millions d’euros d’économies annuelles de souscription. Ces chiffres décrivent ce cas et ne constituent pas un rendement à extrapoler. Le projet montre plutôt l’intérêt d’une trajectoire préparée, financée et éprouvée par des tests de non-régression. Certains progiciels sont traités séparément au lieu d’exiger une sortie totale immédiate.
+
+La trajectoire CNAM décrite par le même guide souligne aussi l’importance d’une équipe dédiée et du financement de la coexistence. La transition peut augmenter temporairement les dépenses ; sans arbitrage préalable sur ces moyens, une équipe peut rester bloquée malgré un objectif partagé.
+
+## Préparer une décision courte
+
+Pour faire avancer le sujet, présentez à la direction un dossier sur une dépendance critique : activité exposée, options étudiées, coûts, délais, compétences nécessaires, risque résiduel et arbitrage attendu. Une page peut suffire si elle relie les faits, les choix et les conséquences.
+
+**Question à poser en comité :** qui décide du niveau de dépendance que notre organisation accepte, et quand cette décision sera-t-elle revue ?
+
+**Sources** : [chronique originale sur Alliancy](https://alliancy.fr/pourquoi-la-maitrise-des-dependances-technologiques-doit-devenir-un-sujet-de-direction-generale-c3ff8dee-3816-42be-bdfe-ce8aab1fe34a) · [rapport parlementaire (Assemblée nationale)](https://www.assemblee-nationale.fr/dyn/17/rapports/cenum/l17b3054_rapport-enquete) · étude Asterès/Cigref, mai 2026 · guide du Do Tank Alliancy, retours d’expérience Urssaf et CNAM (disponible sur demande auprès d’Alliancy).`
+  },
+  {
     "id": "maitrise-dependances-01",
     "title": "Souveraineté numérique : et si vous commenciez par reprendre la maîtrise de vos choix ?",
+    "seoTitle": "Souveraineté numérique : reprendre la main",
     "excerpt": "Comment préserver sa liberté de choisir, de faire évoluer une solution et d’en sortir à des conditions soutenables ? Première chronique d’une série sur la maîtrise des dépendances technologiques.",
     "date": "10 novembre 2026",
     "category": "Stratégie & cybersécurité",
@@ -64,6 +169,7 @@ export const SITE_CONTENT = {
   {
     "id": "dsi-business-partner",
     "title": "Le DSI, partenaire des métiers et acteur de la transformation",
+    "seoTitle": "Le DSI, partenaire des métiers",
     "excerpt": "La continuité de service reste un socle. La contribution du DSI s’étend aussi à la stratégie, à l’évolution des processus et aux transformations qui mobilisent l’ensemble de l’entreprise.",
     "date": "Avril 2026",
     "category": "Stratégie",
@@ -82,6 +188,7 @@ export const SITE_CONTENT = {
   {
     "id": "souverainete-numerique",
     "title": "Souveraineté Numérique : Pourquoi il est temps d'agir (et 5 pistes pour pivoter)",
+    "seoTitle": "Dépendance technologique : 5 pistes d’action",
     "excerpt": "Vous avez parfois le sentiment d’être pieds et poings liés à vos fournisseurs technologiques ? La dépendance technologique est devenue l’un des risques les plus sous-estimés pour la stratégie des entreprises.",
     "date": "17 novembre 2025",
     "category": "Stratégie & cybersécurité",
@@ -100,6 +207,7 @@ export const SITE_CONTENT = {
   {
     "id": "transformation-equipes",
     "title": "Transformation IT : comment faire équipe quand tout change",
+    "seoTitle": "Transformation IT : faire équipe",
     "excerpt": "Un retour d’expérience de Paris 2024, confronté à la réalité d’une direction IT en transformation, fait ressortir trois leviers : donner du sens, préparer l’action et construire la confiance.",
     "category": "Leadership & transformation",
     "image": "/cover-paris-2024.jpg",

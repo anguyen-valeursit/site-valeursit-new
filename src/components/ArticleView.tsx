@@ -10,6 +10,10 @@ import Footer from "./Footer";
 export default function ArticleView() {
   const { id } = useParams();
   const article = SITE_CONTENT.news.find(item => item.id === id);
+  const articleMeta = article as (typeof article & { imageAlt?: string; seoTitle?: string; shareImage?: string }) | undefined;
+  const articleImageAlt = articleMeta?.imageAlt || article?.title || "Valeurs IT";
+  const articleSeoTitle = articleMeta?.seoTitle || article?.title || "Valeurs IT";
+  const articleShareImage = articleMeta?.shareImage || article?.image || "";
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -19,8 +23,10 @@ export default function ArticleView() {
   useEffect(() => {
     if (!article) return;
     const canonicalUrl = `${SITE_URL}/actualites/${article.id}`;
+    const shareImageUrl = articleShareImage.startsWith("http") ? articleShareImage : `${SITE_URL}${articleShareImage}`;
+    const shareImageType = articleShareImage.toLowerCase().endsWith(".png") ? "image/png" : articleShareImage.toLowerCase().endsWith(".svg") ? "image/svg+xml" : "image/jpeg";
     const previousTitle = document.title;
-    document.title = `${article.title} | Valeurs IT`;
+    document.title = `${articleSeoTitle} | Valeurs IT`;
 
     const restoreMeta: Array<() => void> = [];
     const updateMeta = (selector: string, content: string) => {
@@ -39,6 +45,14 @@ export default function ArticleView() {
     updateMeta('meta[property="og:title"]', article.title);
     updateMeta('meta[property="og:description"]', article.excerpt);
     updateMeta('meta[property="og:url"]', canonicalUrl);
+    updateMeta('meta[property="og:image"]', shareImageUrl);
+    updateMeta('meta[property="og:image:secure_url"]', shareImageUrl);
+    updateMeta('meta[property="og:image:type"]', shareImageType);
+    updateMeta('meta[property="og:image:alt"]', articleImageAlt);
+    updateMeta('meta[name="twitter:title"]', article.title);
+    updateMeta('meta[name="twitter:description"]', article.excerpt);
+    updateMeta('meta[name="twitter:image"]', shareImageUrl);
+    updateMeta('meta[name="twitter:image:alt"]', articleImageAlt);
 
     const canonical = document.head.querySelector('link[rel="canonical"]');
     const previousCanonical = canonical?.getAttribute("href") ?? null;
@@ -51,11 +65,11 @@ export default function ArticleView() {
       "@type": "Article",
       headline: article.title,
       description: article.excerpt,
-      datePublished: article.id === "maitrise-dependances-01" ? "2026-11-10" : article.id === "souverainete-numerique" ? "2025-11-17" : article.id === "paris-2024" ? "2024-10-17" : undefined,
+      datePublished: article.id === "maitrise-dependances-01" ? "2026-11-10" : article.id === "maitrise-dependances-02" ? "2026-11-17" : article.id === "maitrise-dependances-03" ? "2026-11-24" : article.id === "souverainete-numerique" ? "2025-11-17" : article.id === "paris-2024" ? "2024-10-17" : undefined,
       author: { "@type": "Person", name: "Alain Nguyen" },
       publisher: { "@type": "Organization", name: "Valeurs IT" },
       mainEntityOfPage: canonicalUrl,
-      image: article.image.startsWith("http") ? article.image : `${SITE_URL}${article.image}`
+      image: shareImageUrl
     });
     document.head.appendChild(schema);
 
@@ -68,7 +82,7 @@ export default function ArticleView() {
       }
       schema.remove();
     };
-  }, [article]);
+  }, [article, articleSeoTitle, articleShareImage]);
 
   if (!article) {
     return <Navigate to="/" replace />;
@@ -170,7 +184,7 @@ export default function ArticleView() {
             >
               <img 
                 src={article.image} 
-                alt={article.title} 
+                alt={articleImageAlt}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
